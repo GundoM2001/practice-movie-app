@@ -1,12 +1,10 @@
-import { Text, View } from "react-native";
-import {Link, Route} from "expo-router";
+import { Image,Text, View } from "react-native";
+import {images} from "@/constants/images";
 
 export default function Index() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text className="text-5xl text-primary font-bold">Welcome!</Text>
-
-
-    </View>
+  <View className="flex-1 bg-primary">
+    <Image source={images.bg} className="w-full h-full" />
+  </View>
   );
 }

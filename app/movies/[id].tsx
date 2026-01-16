@@ -4,7 +4,7 @@ import React from 'react'
 const MovieDetails= () => {
     return (
         <View>
-            <Text>[Id</Text>
+            <Text>[Id]</Text>
         </View>
     )
 }

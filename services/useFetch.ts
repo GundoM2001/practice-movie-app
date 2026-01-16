@@ -35,7 +35,7 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
         if (autoFetch) {
             fetchData()
         }
-    }) //called when you want to execute something at the start of the component load
+    },[autoFetch]) //called when you want to execute something at the start of the component load
 
     //Exposes state and actions to the components using the hook
     return {data, loading, error, refetch: fetchData, reset}

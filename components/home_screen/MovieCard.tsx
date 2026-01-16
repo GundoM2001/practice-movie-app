@@ -3,6 +3,7 @@ import React from 'react'
 import {Link} from "expo-router";
 import {icons} from "@/constants/icons";
 
+// @ts-ignore
 const MovieCard = ({id, poster_path, title, vote_average, release_date}) => {
     return (
         // Route to movies

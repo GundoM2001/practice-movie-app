@@ -10,7 +10,7 @@ import MovieCard from "@/components/home_screen/MovieCard";
 export default function Index() {
     const router = useRouter();
 
-    const {data: movies, loading: moviesLoading, error: moviesError} = useFetch(() => fetchMovies({query: 'teen titans'}))
+    const {data: movies, loading: moviesLoading, error: moviesError} = useFetch(() => fetchMovies({query: ''}))
     return (
         <View className="flex-1 bg-primary">
             <Image source={images.bg} className="absolute w-full h-full z-0"/>

@@ -6,10 +6,15 @@ import {useRouter} from "expo-router";
 import useFetch from "@/services/useFetch";
 import {fetchMovies} from "@/services/api";
 import MovieCard from "@/components/home_screen/MovieCard";
+import {getTrendingMovies} from "@/services/appwrite";
 
 export default function Index() {
     const router = useRouter();
-
+    // const {
+    //     data:trendingMovies,
+    //     loading:trendingLoading,
+    //     error: trendingError
+    // } = useFetch(getTrendingMovies)
     const {data: movies, loading: moviesLoading, error: moviesError} = useFetch(() => fetchMovies({query: ''}))
     return (
         <View className="flex-1 bg-primary">
@@ -24,7 +29,7 @@ export default function Index() {
                         size="large"
                         color="#0000ff"
                         className="mt-10 self-center"/>
-                ): moviesError ? (
+                ) : moviesError ? (
                     <Text> {moviesError.message}</Text>
                 ) : (
                     <View className="flex-1 mt-5">
@@ -38,15 +43,15 @@ export default function Index() {
                                 <MovieCard
                                     {...item}/>
                             )} keyExtractor={(item) => item.id.toString()}
-                            numColumns={3}
-                            columnWrapperStyle={{
-                                justifyContent: 'flex-start',
-                                gap:20,
-                                paddingRight: 5,
-                                marginBottom: 10
-                            }}
-                            className="mt-2, pb-32"
-                            scrollEnabled={false}/>
+                                      numColumns={3}
+                                      columnWrapperStyle={{
+                                          justifyContent: 'flex-start',
+                                          gap: 20,
+                                          paddingRight: 5,
+                                          marginBottom: 10
+                                      }}
+                                      className="mt-2, pb-32"
+                                      scrollEnabled={false}/>
                         </>
                     </View>
                 )}

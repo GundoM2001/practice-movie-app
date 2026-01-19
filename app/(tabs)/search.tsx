@@ -8,6 +8,7 @@ import {fetchMovies} from "@/services/api";
 import {icons} from "@/constants/icons";
 import SearchBar from "@/components/home_screen/SearchBar";
 import * as sea from "node:sea";
+import {updateSearchCount} from "@/services/appwrite";
 
 const Search = () => {
 
@@ -22,11 +23,15 @@ const Search = () => {
     } = useFetch(() => fetchMovies({query: searchQuery}), false)
 
     useEffect(() => {
-
         //Debouncing the search term
         const timeoutID = setTimeout(async () => {
             if (searchQuery.trim()) {
                 await loadMovies()
+
+                if (movies?.length > 0 && movies?.[0]) {
+                   await updateSearchCount(searchQuery, movies[0])
+
+                }
             } else {
                 reset()
             }
@@ -76,13 +81,14 @@ const Search = () => {
                             </Text>)}
                     </>
                 }
-            ListEmptyComponent={
-                !loading && !error ? (
-                    <View>
-                        <Text className="text-center text-gray-500">{searchQuery.trim() ? 'No Movies Found' : 'Search for a movie'}</Text>
-                    </View>
-                ) : null
-            }/>
+                ListEmptyComponent={
+                    !loading && !error ? (
+                        <View>
+                            <Text
+                                className="text-center text-gray-500">{searchQuery.trim() ? 'No Movies Found' : 'Search for a movie'}</Text>
+                        </View>
+                    ) : null
+                }/>
 
         </View>
     )

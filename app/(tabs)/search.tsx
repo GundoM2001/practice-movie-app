@@ -10,7 +10,6 @@ import SearchBar from "@/components/home_screen/SearchBar";
 import * as sea from "node:sea";
 
 const Search = () => {
-    const router = useRouter();
 
     const [searchQuery, setSearchQuery] = useState('')
 

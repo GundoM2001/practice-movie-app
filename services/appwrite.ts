@@ -17,6 +17,8 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
 
      console.log(result)
 
+     // Check if a record of that search has been stored
+     // If a document is found, increment the searchCount field
      if (result.documents.length > 0) {
          const existingMovie = result.documents[0]
 
@@ -41,6 +43,5 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
      console.log(error);
      throw error;
  }
-    // Check if a record of that search has been stored
-    // If a document is found, increment the searchCount field
+
 }
